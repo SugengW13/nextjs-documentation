@@ -15,6 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>Next.js Documentation</title>
+      </head>
+
       <body className={inter.className}>
         <Providers>
           <main className='min-h-screen'>
