@@ -6,7 +6,7 @@ import {
 } from "@nextui-org/react";
 import {useRouter} from "next/navigation";
 
-export default function Home() {
+export default function PageRegister () {
   const router = useRouter()
 
   return (
@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <h2 className='text-center text-2xl font-semibold mb-5'>
-          Login
+          Register
         </h2>
 
         <div className='w-full flex flex-col gap-5'>
@@ -33,21 +33,27 @@ export default function Home() {
             variant='bordered'
           />
 
+          <Input
+            type='password'
+            label='Confirm Password'
+            variant='bordered'
+          />
+
           <Button
             size='lg'
             color='primary'
             onClick={() => router.push('/users')}
           >
-            Login
+            Register
           </Button>
 
           <Button
             size='lg'
             color='primary'
             variant='bordered'
-            onClick={() => router.push('/register')}
+            onClick={() => router.push('/')}
           >
-            Register
+            Login
           </Button>
         </div>
       </div>
