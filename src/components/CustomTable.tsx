@@ -16,9 +16,8 @@ export default function CustomTable () {
   const [modalDeleteUser, setModalDeleteUser] = useState<boolean[]>([])
 
   const users = [
-    { name: 'Sugeng', age: 22 },
-    { name: 'Warsito', age: 22 },
-    { name: 'Eivor', age: 29 }
+    { email: 'sugeng@gmail.com', name: 'Sugeng' },
+    { email: 'warsito@gmail.com', name: 'Warsito' }
   ]
 
   const setStateModalUpdate = (index: number, isOpen: boolean) => {
@@ -36,16 +35,16 @@ export default function CustomTable () {
   return (
     <Table aria-label="Example static collection table">
       <TableHeader>
+        <TableColumn>Email</TableColumn>
         <TableColumn>Name</TableColumn>
-        <TableColumn>Age</TableColumn>
         <TableColumn>Action</TableColumn>
       </TableHeader>
       <TableBody>
         {(
           users.map((user, index) => (
             <TableRow key={index}>
+              <TableCell>{user.email}</TableCell>
               <TableCell>{user.name}</TableCell>
-              <TableCell>{user.age} Years Old</TableCell>
               <TableCell>
                 <div className='flex gap-3'>
                   <ModalFormUser
