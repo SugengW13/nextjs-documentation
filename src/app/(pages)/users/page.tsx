@@ -2,17 +2,28 @@
 
 import {
   Input,
-  Button
+  Button, Skeleton
 } from "@nextui-org/react";
 import {useRouter} from "next/navigation";
 import CustomTable from "@/components/CustomTable";
 import ModalFormUser from "@/components/ModalFormUser";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {useAppDispatch, useAppSelector} from "@/store/hook";
+import {getItems} from "@/store/feature/user/user-slice";
 
 export default function PageUsers () {
+  const dispatch = useAppDispatch()
   const router = useRouter()
 
+  const userState = useAppSelector((state) => state.user)
+  const users = userState.items
+  const isLoading = userState.isLoading
+
   const [modalCreateUser, setModalCreateUser] = useState<boolean>(false)
+
+  useEffect(() => {
+    dispatch(getItems())
+  }, [])
 
   return (
     <div className='min-h-screen w-full flex flex-col items-center justify-center'>
@@ -50,7 +61,14 @@ export default function PageUsers () {
             )}
           />
         </div>
-        <CustomTable/>
+
+        {
+          isLoading
+            ? <Skeleton className="rounded-xl">
+                <div className="h-32"></div>
+              </Skeleton>
+            : <CustomTable items={users}/>
+        }
       </div>
     </div>
   )
