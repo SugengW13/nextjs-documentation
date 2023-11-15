@@ -37,8 +37,12 @@ export default function ModalFormUser (props: Props) {
               </ModalHeader>
 
               <ModalBody>
+                <Input type='email' label='Email' />
                 <Input type='text' label='Name' />
-                <Input type='number' label='Age' />
+                <Input type='password' label='Password' />
+                { props.title.includes('Create') &&
+                    <Input type='password' label='Password Confirmation' />
+                }
               </ModalBody>
 
               <ModalFooter>
